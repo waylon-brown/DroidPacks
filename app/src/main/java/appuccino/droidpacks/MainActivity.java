@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -16,7 +17,7 @@ import com.astuetz.PagerSlidingTabStrip;
 import java.util.Locale;
 
 
-public class MainActivity extends Activity implements ActionBar.TabListener, PacksFragment.OnFragmentInteractionListener {
+public class MainActivity extends Activity implements ActionBar.TabListener, PacksFragment.OnFragmentInteractionListener, LibraryFragment.OnFragmentInteractionListener{
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
@@ -30,7 +31,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
         FontManager.setup(this);
         setContentView(R.layout.activity_main);
 
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(this, getFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
@@ -84,18 +85,20 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
      * one of the sections/tabs/pages.
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
+        Context context;
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        public SectionsPagerAdapter(Context context, FragmentManager fm) {
             super(fm);
+            this.context = context;
         }
 
         @Override
         public Fragment getItem(int position) {
             switch(position){
                 case 0:
-                    return PacksFragment.newInstance();
+                    return PacksFragment.newInstance(context);
                 default:
-                    return PacksFragment.newInstance();
+                    return LibraryFragment.newInstance(context);
             }
         }
 
