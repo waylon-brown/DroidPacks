@@ -1,4 +1,4 @@
-package appuccino.droidpacks;
+package appuccino.droidpacks.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -15,6 +15,11 @@ import android.view.MenuItem;
 import com.astuetz.PagerSlidingTabStrip;
 
 import java.util.Locale;
+
+import appuccino.droidpacks.R;
+import appuccino.droidpacks.extra.FontManager;
+import appuccino.droidpacks.fragments.LibraryFragment;
+import appuccino.droidpacks.fragments.PacksFragment;
 
 
 public class MainActivity extends Activity implements ActionBar.TabListener, PacksFragment.OnFragmentInteractionListener, LibraryFragment.OnFragmentInteractionListener{

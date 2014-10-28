@@ -1,4 +1,4 @@
-package appuccino.droidpacks;
+package appuccino.droidpacks.listadapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,7 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import appuccino.droidpacks.R;
+import appuccino.droidpacks.objects.Pack;
+import it.sephiroth.android.library.widget.HListView;
 
 
 public class ListAdapterPack extends ArrayAdapter<Pack> {
@@ -36,6 +41,21 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
 
             holder = new PackHolder();
             holder.packBackground = (LinearLayout)row.findViewById(R.id.packBackground);
+            holder.horizontalAppList = (HListView)row.findViewById(R.id.horizontalAppList);
+
+            List<String> testList = new ArrayList<String>();
+            testList.add("First");
+            testList.add("Second");
+            testList.add("Third");
+            testList.add("Third");
+            testList.add("Third");
+            testList.add("Third");
+            testList.add("Third");
+            testList.add("Third");
+            testList.add("Third");
+            holder.arrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, testList);
+
+            holder.horizontalAppList.setAdapter(holder.arrayAdapter);
 
             row.setTag(holder);
         }
@@ -67,5 +87,7 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
     static class PackHolder
     {
         LinearLayout packBackground;
+        ArrayAdapter<String> arrayAdapter;
+        HListView horizontalAppList;
     }
 }

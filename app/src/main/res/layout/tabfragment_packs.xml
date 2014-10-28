@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="appuccino.droidpacks.PacksFragment">
+    tools:context="appuccino.droidpacks.fragments.PacksFragment">
 
     <ListView
         android:id="@+id/list"
@@ -11,5 +11,10 @@
         android:layout_height="match_parent"
         android:dividerHeight="0dp"
         android:divider="@null"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/topdropshadow"/>
 
 </FrameLayout>

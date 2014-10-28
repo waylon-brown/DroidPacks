@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/packBackground"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:background="@color/blue">
+    android:layout_height="wrap_content"
+    android:background="@color/blue"
+    android:orientation="vertical">
+
+    <appuccino.droidpacks.extra.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:text="Appuccino Pack"
+        app:typeface="light"
+        />
+
+    <it.sephiroth.android.library.widget.HListView
+        android:id="@+id/horizontalAppList"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:divider="@null"
+        app:hlv_dividerWidth="0dp"/>
 
 </LinearLayout>
