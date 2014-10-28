@@ -27,9 +27,9 @@
     <color name="alphawhite">#55FFFFFF</color>
     <color name="alphablack">#BB000000</color>
 
-    <color name="flatblue">#3498db</color>
-    <color name="flatgreen">#2ecc71</color>
-    <color name="flatpurple">#9b59b6</color>
-    <color name="flatorange">#e67e22</color>
+    <color name="flatblue">#2980b9</color>
+    <color name="flatgreen">#27ae60</color>
+    <color name="flatpurple">#8e44ad</color>
+    <color name="flatorange">#d35400</color>
 
 </resources>
