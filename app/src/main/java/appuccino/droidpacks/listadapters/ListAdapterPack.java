@@ -68,16 +68,16 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
 
         switch(position){
             case 0:
-                holder.packBackground.setBackgroundColor(context.getResources().getColor(R.color.flatblue));
+                holder.packBackground.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.bluegradient));
                 break;
             case 1:
-                holder.packBackground.setBackgroundColor(context.getResources().getColor(R.color.flatgreen));
+                holder.packBackground.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.greengradient));
                 break;
             case 2:
-                holder.packBackground.setBackgroundColor(context.getResources().getColor(R.color.flatpurple));
+                holder.packBackground.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.purplegradient));
                 break;
             case 3:
-                holder.packBackground.setBackgroundColor(context.getResources().getColor(R.color.flatorange));
+                holder.packBackground.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.redgradient));
                 break;
         }
 
