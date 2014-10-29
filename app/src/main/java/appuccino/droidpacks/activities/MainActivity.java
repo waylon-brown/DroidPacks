@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.google.android.gms.common.AccountPicker;
 
 import java.util.Locale;
 
