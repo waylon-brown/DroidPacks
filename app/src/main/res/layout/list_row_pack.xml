@@ -3,25 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/packBackground"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="320dp"
     android:background="@color/blue"
     android:orientation="vertical">
 
-    <appuccino.droidpacks.extra.CustomTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:textColor="@color/white"
-        android:textSize="30sp"
-        android:text="Appuccino Pack"
-        app:typeface="light"
-        />
+    <!-- top section of list item -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <appuccino.droidpacks.extra.CustomTextView
+            android:id="@+id/downloadPackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:padding="6dp"
+            android:background="@color/white"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="Download"
+            app:typeface="light"
+            android:textSize="25sp"
+            android:textColor="@color/darkgray"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toLeftOf="@id/downloadPackButton">
+
+            <appuccino.droidpacks.extra.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:text="Appuccino Pack"
+                app:typeface="light"
+                />
+
+            <appuccino.droidpacks.extra.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="10dp"
+                android:textColor="@color/lightgray"
+                android:textSize="20sp"
+                android:text="13,768 downloads"
+                app:typeface="light"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <it.sephiroth.android.library.widget.HListView
         android:id="@+id/horizontalAppList"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:divider="@null"
-        app:hlv_dividerWidth="0dp"/>
+        app:hlv_dividerWidth="10dp"/>
 
 </LinearLayout>

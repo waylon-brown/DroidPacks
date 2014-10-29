@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import appuccino.droidpacks.R;
+import appuccino.droidpacks.objects.App;
 import appuccino.droidpacks.objects.Pack;
 import it.sephiroth.android.library.widget.HListView;
 
@@ -32,7 +34,7 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
-        PackHolder holder = null;
+        PackHolder holder;
 
         if(row == null)
         {
@@ -43,25 +45,42 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
             holder.packBackground = (LinearLayout)row.findViewById(R.id.packBackground);
             holder.horizontalAppList = (HListView)row.findViewById(R.id.horizontalAppList);
 
-            List<String> testList = new ArrayList<String>();
-            testList.add("First");
-            testList.add("Second");
-            testList.add("Third");
-            testList.add("Third");
-            testList.add("Third");
-            testList.add("Third");
-            testList.add("Third");
-            testList.add("Third");
-            testList.add("Third");
-            holder.arrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, testList);
+//            List<String> testList = new ArrayList<String>();
+//            testList.add("First");
+//            testList.add("Second");
+//            testList.add("Third");
+//            testList.add("Fourth");
+//            testList.add("Fifth");
+//            testList.add("Third");
+//            testList.add("Third");
+//            testList.add("Third");
+//            testList.add("Third");
+//            holder.arrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, testList);
 
-            holder.horizontalAppList.setAdapter(holder.arrayAdapter);
+            List<App> tempAppList = new ArrayList<App>();
+            tempAppList.add(new App());
+            tempAppList.add(new App());
+            tempAppList.add(new App());
+            tempAppList.add(new App());
+
+            holder.adapter = new ListAdapterApp(context, R.layout.list_column_app, tempAppList);
+
+            holder.horizontalAppList.setAdapter(holder.adapter);
 
             row.setTag(holder);
         }
         else
         {
             holder = (PackHolder)row.getTag();
+        }
+
+        //if doesnt havefooter, add it
+        if(holder.horizontalAppList.getFooterViewsCount() == 0)
+        {
+            //for card UI
+            View sideHeaderFooter = new View(context);
+            sideHeaderFooter.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 8));
+            holder.horizontalAppList.addFooterView(sideHeaderFooter, null, false);
         }
 
         Pack pack = packList.get(position);
@@ -87,7 +106,7 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
     static class PackHolder
     {
         LinearLayout packBackground;
-        ArrayAdapter<String> arrayAdapter;
+        ListAdapterApp adapter;
         HListView horizontalAppList;
     }
 }
