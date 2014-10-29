@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/packBackground"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="wrap_content"
     android:background="@color/blue"
     android:orientation="vertical">
 
@@ -43,6 +43,7 @@
                 android:text="Appuccino Pack"
                 app:typeface="light"
                 android:singleLine="true"
+                style="@style/dropShadowText"
                 />
 
             <appuccino.droidpacks.extra.CustomTextView
@@ -65,20 +66,23 @@
     <it.sephiroth.android.library.widget.HListView
         android:id="@+id/horizontalAppList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:divider="@null"
-        app:hlv_dividerWidth="10dp"/>
+        app:hlv_dividerWidth="10dp"
+        android:clickable="false"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="4dp"
         android:orientation="horizontal">
 
         <appuccino.droidpacks.extra.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/lightlightgray"
             android:textSize="16sp"
             android:text="$2.15 average"
             app:typeface="light"
@@ -94,14 +98,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/lightlightgray"
             android:textSize="16sp"
             android:text="$114.24 given to charity"
             app:typeface="light"
             android:singleLine="true"
             />
 
-
     </LinearLayout>
+
+    <appuccino.droidpacks.extra.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/lightlightgray"
+        android:textSize="16sp"
+        android:text="Pay more than the average of $2.15 to get the two gold apps!"
+        app:typeface="italic"
+        android:gravity="center_horizontal"
+        />
 
 </LinearLayout>

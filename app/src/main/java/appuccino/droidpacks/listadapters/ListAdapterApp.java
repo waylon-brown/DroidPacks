@@ -7,12 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import appuccino.droidpacks.R;
+import appuccino.droidpacks.extra.MyLog;
 import appuccino.droidpacks.objects.App;
 
 
@@ -78,6 +80,7 @@ public class ListAdapterApp extends ArrayAdapter<App> {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(layoutID, parent, false);
 
+            holder.card = (LinearLayout)row.findViewById(R.id.card);
             holder.appIcon = (ImageView)row.findViewById(R.id.appIcon);
 
             row.setTag(holder);
@@ -91,12 +94,20 @@ public class ListAdapterApp extends ArrayAdapter<App> {
 
         Picasso.with(context).load(R.drawable.example_icon).into(holder.appIcon);
 
+        //item click listener
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyLog.i("click");
+            }
+        });
+
         return row;
     }
 
     static class AppHolder
     {
-        int rowLayoutID;
+        LinearLayout card;
         ImageView appIcon;
     }
 }
