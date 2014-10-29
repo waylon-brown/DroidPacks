@@ -1,4 +1,4 @@
-package appuccino.droidpacks.dummy;
+package com.appuccino.droidpacks.dummy;
 
 import java.util.ArrayList;
 import java.util.HashMap;

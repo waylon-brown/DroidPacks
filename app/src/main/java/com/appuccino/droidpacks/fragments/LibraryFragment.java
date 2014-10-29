@@ -1,4 +1,4 @@
-package appuccino.droidpacks.fragments;
+package com.appuccino.droidpacks.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -12,8 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 
-import appuccino.droidpacks.R;
-import appuccino.droidpacks.dummy.DummyContent;
+import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.dummy.DummyContent;
 
 public class LibraryFragment extends Fragment implements AbsListView.OnItemClickListener {
 

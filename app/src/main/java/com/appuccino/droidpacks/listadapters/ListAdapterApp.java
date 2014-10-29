@@ -1,4 +1,4 @@
-package appuccino.droidpacks.listadapters;
+package com.appuccino.droidpacks.listadapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,13 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.appuccino.droidpacks.extra.MyLog;
+import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.objects.App;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-
-import appuccino.droidpacks.R;
-import appuccino.droidpacks.extra.MyLog;
-import appuccino.droidpacks.objects.App;
 
 
 public class ListAdapterApp extends ArrayAdapter<App> {

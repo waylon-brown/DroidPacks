@@ -1,4 +1,4 @@
-package appuccino.droidpacks.extra;
+package com.appuccino.droidpacks.extra;
 
 import android.content.Context;
 import android.graphics.Typeface;

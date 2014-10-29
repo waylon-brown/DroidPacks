@@ -1,4 +1,4 @@
-package appuccino.droidpacks.activities;
+package com.appuccino.droidpacks.activities;
 
 import android.app.ActionBar;
 import android.app.Activity;
@@ -13,15 +13,14 @@ import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.appuccino.droidpacks.extra.FontManager;
+import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.fragments.LibraryFragment;
+import com.appuccino.droidpacks.fragments.PacksFragment;
 import com.astuetz.PagerSlidingTabStrip;
 import com.google.android.gms.common.AccountPicker;
 
 import java.util.Locale;
-
-import appuccino.droidpacks.R;
-import appuccino.droidpacks.extra.FontManager;
-import appuccino.droidpacks.fragments.LibraryFragment;
-import appuccino.droidpacks.fragments.PacksFragment;
 
 
 public class MainActivity extends Activity implements ActionBar.TabListener, PacksFragment.OnFragmentInteractionListener, LibraryFragment.OnFragmentInteractionListener{

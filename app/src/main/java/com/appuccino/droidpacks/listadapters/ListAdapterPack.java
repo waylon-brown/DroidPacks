@@ -1,4 +1,4 @@
-package appuccino.droidpacks.listadapters;
+package com.appuccino.droidpacks.listadapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,12 +9,13 @@ import android.widget.AbsListView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 
+import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.objects.App;
+import com.appuccino.droidpacks.objects.Pack;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import appuccino.droidpacks.R;
-import appuccino.droidpacks.objects.App;
-import appuccino.droidpacks.objects.Pack;
 import it.sephiroth.android.library.widget.HListView;
 
 

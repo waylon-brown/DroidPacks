@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <appuccino.droidpacks.extra.CustomTextView
+        <com.appuccino.droidpacks.extra.CustomTextView
             android:id="@+id/downloadPackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
             android:orientation="vertical"
             android:layout_toLeftOf="@id/downloadPackButton">
 
-            <appuccino.droidpacks.extra.CustomTextView
+            <com.appuccino.droidpacks.extra.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="10dp"
@@ -46,7 +46,7 @@
                 style="@style/dropShadowText"
                 />
 
-            <appuccino.droidpacks.extra.CustomTextView
+            <com.appuccino.droidpacks.extra.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -78,7 +78,7 @@
         android:paddingTop="4dp"
         android:orientation="horizontal">
 
-        <appuccino.droidpacks.extra.CustomTextView
+        <com.appuccino.droidpacks.extra.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"/>
 
-        <appuccino.droidpacks.extra.CustomTextView
+        <com.appuccino.droidpacks.extra.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
@@ -107,7 +107,7 @@
 
     </LinearLayout>
 
-    <appuccino.droidpacks.extra.CustomTextView
+    <com.appuccino.droidpacks.extra.CustomTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"

@@ -1,4 +1,4 @@
-package appuccino.droidpacks.objects;
+package com.appuccino.droidpacks.objects;
 
 /**
  * Created by Waylon on 10/27/2014.

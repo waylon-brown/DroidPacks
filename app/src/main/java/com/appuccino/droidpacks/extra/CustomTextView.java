@@ -1,4 +1,4 @@
-package appuccino.droidpacks.extra;
+package com.appuccino.droidpacks.extra;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -6,7 +6,7 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import appuccino.droidpacks.R;
+import com.appuccino.droidpacks.R;
 
 public class CustomTextView extends TextView {
 
