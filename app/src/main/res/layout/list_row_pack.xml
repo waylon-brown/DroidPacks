@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/packBackground"
     android:layout_width="match_parent"
-    android:layout_height="320dp"
+    android:layout_height="400dp"
     android:background="@color/blue"
     android:orientation="vertical">
 
@@ -23,7 +23,7 @@
             android:layout_centerVertical="true"
             android:text="Download"
             app:typeface="light"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="@color/darkgray"/>
 
         <LinearLayout
@@ -39,9 +39,10 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:textColor="@color/white"
-                android:textSize="30sp"
+                android:textSize="23sp"
                 android:text="Appuccino Pack"
                 app:typeface="light"
+                android:singleLine="true"
                 />
 
             <appuccino.droidpacks.extra.CustomTextView
@@ -51,9 +52,10 @@
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
                 android:textColor="@color/lightgray"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:text="13,768 downloads"
                 app:typeface="light"
+                android:singleLine="true"
                 />
 
         </LinearLayout>
@@ -66,5 +68,40 @@
         android:layout_height="wrap_content"
         android:divider="@null"
         app:hlv_dividerWidth="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <appuccino.droidpacks.extra.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="$2.15 average"
+            app:typeface="light"
+            android:singleLine="true"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <appuccino.droidpacks.extra.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:text="$114.24 given to charity"
+            app:typeface="light"
+            android:singleLine="true"
+            />
+
+
+    </LinearLayout>
 
 </LinearLayout>
