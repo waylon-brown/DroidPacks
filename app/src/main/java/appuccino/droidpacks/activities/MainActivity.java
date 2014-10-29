@@ -6,6 +6,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -23,6 +24,8 @@ import appuccino.droidpacks.fragments.PacksFragment;
 
 
 public class MainActivity extends Activity implements ActionBar.TabListener, PacksFragment.OnFragmentInteractionListener, LibraryFragment.OnFragmentInteractionListener{
+
+    static final int REQUEST_CODE_PICK_ACCOUNT = 1000;
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
@@ -43,6 +46,16 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
         tabStrip = (PagerSlidingTabStrip)findViewById(R.id.tabs);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabStrip.setViewPager(mViewPager);
+
+        pickUserAccount();
+
+    }
+
+    private void pickUserAccount() {
+        String[] accountTypes = new String[]{"com.google"};
+        Intent intent = AccountPicker.newChooseAccountIntent(null, null,
+                accountTypes, false, null, null, null, null);
+        startActivityForResult(intent, REQUEST_CODE_PICK_ACCOUNT);
     }
 
 

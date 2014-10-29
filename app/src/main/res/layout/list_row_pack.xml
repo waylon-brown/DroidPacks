@@ -82,7 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
-            android:textColor="@color/lightlightgray"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:text="$2.15 average"
             app:typeface="light"
@@ -98,7 +98,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
-            android:textColor="@color/lightlightgray"
+            android:textColor="@color/white"
             android:textSize="16sp"
             android:text="$114.24 given to charity"
             app:typeface="light"
@@ -112,11 +112,12 @@
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/lightlightgray"
+        android:textColor="@color/white"
         android:textSize="16sp"
         android:text="Pay more than the average of $2.15 to get the two gold apps!"
         app:typeface="italic"
         android:gravity="center_horizontal"
+        style="@style/dropShadowText"
         />
 
 </LinearLayout>

@@ -25,4 +25,5 @@ dependencies {
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
     compile 'it.sephiroth.android.library.horizontallistview:hlistview:1.2.2'
     compile group:'com.squareup.picasso', name:'picasso', version:'2.3.4'
+    compile 'com.google.android.gms:play-services:4.2.42'
 }
