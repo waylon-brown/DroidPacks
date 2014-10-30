@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/fill"
+    android:background="@color/lightgray">
+
+    <ScrollView
+        style="@style/fill">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/lightgray"
+            android:orientation="vertical">
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                style="@style/block"
+                android:textColor="@color/white"
+                app:typeface="medium"
+                android:paddingLeft="8dp"
+                android:paddingTop="10dp"
+                android:textSize="16sp"
+                android:background="@color/flatblue"
+                android:text="Account"
+                />
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                style="@style/block"
+                android:textColor="@color/white"
+                app:typeface="light"
+                android:paddingLeft="16dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="14dp"
+                android:textSize="20sp"
+                android:background="@color/flatblue"
+                android:text="waylonjbrown@gmail.com"
+                android:singleLine="true"
+                />
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                style="@style/block"
+                android:textColor="@color/darkgray"
+                app:typeface="light"
+                android:paddingLeft="18dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textSize="20sp"
+                android:background="@color/lightgray"
+                android:text="Log out"
+                android:singleLine="true"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"/>
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                style="@style/block"
+                android:textColor="@color/darkgray"
+                app:typeface="light"
+                android:paddingLeft="18dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textSize="20sp"
+                android:background="@color/lightgray"
+                android:text="How's it work?"
+                android:singleLine="true"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"/>
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                style="@style/block"
+                android:textColor="@color/darkgray"
+                app:typeface="light"
+                android:paddingLeft="18dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textSize="20sp"
+                android:background="@color/lightgray"
+                android:text="Contact us"
+                android:singleLine="true"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

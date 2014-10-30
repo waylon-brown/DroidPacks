@@ -12,13 +12,18 @@ import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 
-import com.appuccino.droidpacks.extra.FontManager;
 import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.extra.FontManager;
 import com.appuccino.droidpacks.fragments.LibraryFragment;
 import com.appuccino.droidpacks.fragments.PacksFragment;
 import com.astuetz.PagerSlidingTabStrip;
+import com.google.android.gms.auth.GoogleAuthUtil;
 import com.google.android.gms.common.AccountPicker;
+
+import net.simonvt.menudrawer.MenuDrawer;
 
 import java.util.Locale;
 
@@ -30,6 +35,8 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
     PagerSlidingTabStrip tabStrip;
+    MenuDrawer menuDrawer;
+    LinearLayout actionBarButton;
 
     PacksFragment.OnFragmentInteractionListener fragListener;
 
@@ -37,22 +44,40 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FontManager.setup(this);
-        setContentView(R.layout.activity_main);
+
+        menuDrawer = MenuDrawer.attach(this);
+        menuDrawer.setContentView(R.layout.activity_main);
+        menuDrawer.setMenuView(R.layout.menu_drawer);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(this, getFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.pager);
         tabStrip = (PagerSlidingTabStrip)findViewById(R.id.tabs);
+        actionBarButton = (LinearLayout)findViewById(R.id.actionBar);
+
         mViewPager.setAdapter(mSectionsPagerAdapter);
         tabStrip.setViewPager(mViewPager);
 
-        pickUserAccount();
+        setupMenuDrawerViews();
+        //pickUserAccount();
+    }
 
+    private void setupMenuDrawerViews(){
+        if(menuDrawer != null){
+            if(actionBarButton != null){
+                actionBarButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        menuDrawer.toggleMenu();
+                    }
+                });
+            }
+        }
     }
 
     private void pickUserAccount() {
-        String[] accountTypes = new String[]{"com.google"};
+        //String[] accountTypes = new String[]{"com.google"};
+        String[] accountTypes = new String[]{GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE};
         Intent intent = AccountPicker.newChooseAccountIntent(null, null,
                 accountTypes, false, null, null, null, null);
         startActivityForResult(intent, REQUEST_CODE_PICK_ACCOUNT);
@@ -76,6 +101,19 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(menuDrawer != null){
+            final int drawerState = menuDrawer.getDrawerState();
+            if (drawerState == MenuDrawer.STATE_OPEN || drawerState == MenuDrawer.STATE_OPENING) {
+                menuDrawer.closeMenu();
+                return;
+            }
+        }
+
+        super.onBackPressed();
     }
 
     @Override
