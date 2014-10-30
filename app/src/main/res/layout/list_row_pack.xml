@@ -66,7 +66,7 @@
     <it.sephiroth.android.library.widget.HListView
         android:id="@+id/horizontalAppList"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="230dp"
         android:divider="@null"
         app:hlv_dividerWidth="10dp"
         android:clickable="false"
