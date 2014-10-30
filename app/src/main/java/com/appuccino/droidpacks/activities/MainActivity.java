@@ -31,6 +31,7 @@ import java.util.Locale;
 public class MainActivity extends Activity implements ActionBar.TabListener, PacksFragment.OnFragmentInteractionListener, LibraryFragment.OnFragmentInteractionListener{
 
     static final int REQUEST_CODE_PICK_ACCOUNT = 1000;
+    public static Context globalContext;
 
     SectionsPagerAdapter mSectionsPagerAdapter;
     ViewPager mViewPager;
@@ -43,6 +44,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        globalContext = this;
         FontManager.setup(this);
 
         menuDrawer = MenuDrawer.attach(this);
