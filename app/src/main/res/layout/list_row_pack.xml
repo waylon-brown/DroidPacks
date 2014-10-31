@@ -52,7 +52,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:textColor="@color/lightgray"
+                android:textColor="@color/alphawhitelessalpha"
                 android:textSize="16sp"
                 android:text="13,768 downloads"
                 app:typeface="light"

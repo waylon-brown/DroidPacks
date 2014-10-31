@@ -59,10 +59,10 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
 //            holder.arrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, testList);
 
             List<App> tempAppList = new ArrayList<App>();
-            tempAppList.add(new App());
-            tempAppList.add(new App());
-            tempAppList.add(new App());
-            tempAppList.add(new App());
+            tempAppList.add(new App("TheCampusFeed", context.getResources().getDrawable(R.drawable.example_icon)));
+            tempAppList.add(new App("Scientific 7 Min Workout Pro", context.getResources().getDrawable(R.drawable.example_icon)));
+            tempAppList.add(new App("Frequency Pro", context.getResources().getDrawable(R.drawable.example_icon)));
+            tempAppList.add(new App("SmartSilence Pro", context.getResources().getDrawable(R.drawable.example_icon)));
 
             holder.adapter = new ListAdapterApp(context, R.layout.list_column_app, tempAppList);
 

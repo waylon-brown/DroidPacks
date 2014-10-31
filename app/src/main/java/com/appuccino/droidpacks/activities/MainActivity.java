@@ -50,6 +50,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
         menuDrawer = MenuDrawer.attach(this);
         menuDrawer.setContentView(R.layout.activity_main);
         menuDrawer.setMenuView(R.layout.menu_drawer);
+        menuDrawer.setMenuSize(dpToPx(260));
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(this, getFragmentManager());
 
@@ -116,6 +117,10 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
         }
 
         super.onBackPressed();
+    }
+
+    private int dpToPx(int dp) {
+        return (int) (getResources().getDisplayMetrics().density * dp + 0.5f);
     }
 
     @Override

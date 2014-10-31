@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightgray">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/lightgray"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp">
+
+                <ImageView
+                    android:id="@+id/dialogAppIcon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_margin="10dp"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.appuccino.droidpacks.extra.CustomTextView
+                        android:id="@+id/dialogAppName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lines="2"
+                        android:textColor="@color/darkgray"
+                        app:typeface="light"
+                        android:textSize="26sp"
+                        android:text="Scientific 7 Minute Workout"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="2dp"
+                        android:layout_marginLeft="-4dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_margin="3dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/star_filled"/>
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_margin="3dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/star_filled"/>
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_margin="3dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/star_filled"/>
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_margin="3dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/star_half"/>
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_margin="3dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/star_empty"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                android:id="@+id/goToPlayStoreButton"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/flatblue"
+                android:text="View on Google Play"
+                android:padding="6dp"
+                app:typeface="light"
+                android:textSize="20sp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/appStoreImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-6dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"/>
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:typeface="light"
+                android:textColor="@color/darkgray"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="*Featured on LifeHacker and XDA Developers*
+Frequency: the newest and best-looking way to see what apps you use, how much you use them, and when you use them. See what apps you never use and uninstall them right from the app!
+
+The Pro version includes:
+✓ The background app-tracking process can start at boot instead of needing to start the app once your phone first boots up
+✓ Change the app-tracking accuracy. By default, Frequency tracks your app usage every 30 seconds, but this can be raised or lowered. The more accurate you set the app usage accuracy, the more battery consumption the app uses
+
+Along with the rest of the Frequency features:
+✓ Holo Card UI design
+✓ View all apps you have used in the timeframe, or all apps you have installed in the timeframe
+✓ Show the amount of time you have used your apps Today, Last Week, Last Month, Last 3 Months, or All Time
+✓ No-Show list for app usage that you don't want to show
+
+★Frequency Pro has peaked at:★
+• All apps → #37 in Top New Paid Apps
+• Tools category → #2 in Top New Paid Apps
+• Tools category → #16 in Top New Free Apps (Free version)
+NOTE: This app doesn't currently work properly in Android L, due to its change in API. We're currently fixing this."/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

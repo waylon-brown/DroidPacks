@@ -9,8 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.appuccino.droidpacks.extra.MyLog;
 import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.dialogs.AppInfoDialog;
 import com.appuccino.droidpacks.objects.App;
 import com.squareup.picasso.Picasso;
 
@@ -54,7 +54,7 @@ public class ListAdapterApp extends ArrayAdapter<App> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         int layoutID = 0;
 
@@ -91,17 +91,26 @@ public class ListAdapterApp extends ArrayAdapter<App> {
 
         App app = appList.get(position);
 
-        Picasso.with(context).load(R.drawable.example_icon).into(holder.appIcon);
+        //todo: change out with image URI
+        if(app.exampleIcon != null){
+            Picasso.with(context).load(R.drawable.example_icon).into(holder.appIcon);
+        }
 
         //item click listener
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyLog.i("click");
+                LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+                View commentDialogLayout = inflater.inflate(R.layout.dialog_app_info, null);
+                new AppInfoDialog(context, commentDialogLayout, appList.get(position));
             }
         });
 
         return row;
+    }
+
+    private void showAppInfoDialog(){
+
     }
 
     static class AppHolder

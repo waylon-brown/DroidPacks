@@ -25,6 +25,7 @@
     
     <color name="white">#FFFFFF</color>
     <color name="alphawhite">#55FFFFFF</color>
+    <color name="alphawhitelessalpha">#CCFFFFFF</color>
     <color name="alphablack">#BB000000</color>
 
     <color name="flatblue">#2980b9</color>
