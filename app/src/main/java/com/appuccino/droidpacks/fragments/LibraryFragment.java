@@ -11,6 +11,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.appuccino.droidpacks.R;
 import com.appuccino.droidpacks.dummy.DummyContent;
@@ -18,8 +19,8 @@ import com.appuccino.droidpacks.dummy.DummyContent;
 public class LibraryFragment extends Fragment implements AbsListView.OnItemClickListener {
 
     private OnFragmentInteractionListener mListener;
-    private AbsListView mListView;
-    private ListAdapter mAdapter;
+    private ListView listView;
+    private ListAdapter adapter;
     private static Context context;
 
     // TODO: Rename and change types of parameters
@@ -36,19 +37,19 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mAdapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
+        adapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
                 android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_app, container, false);
+        View view = inflater.inflate(R.layout.library, container, false);
 
         // Set the adapter
-        mListView = (AbsListView) view.findViewById(android.R.id.list);
-        mListView.setAdapter(mAdapter);
-        mListView.setOnItemClickListener(this);
+        listView = (ListView) view.findViewById(R.id.libraryList);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
 
         return view;
     }

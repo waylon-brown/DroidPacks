@@ -101,7 +101,11 @@
                 android:layout_height="wrap_content"
                 android:background="@color/flatblue"
                 android:text="View on Google Play"
-                android:padding="6dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:layout_marginTop="-6dp"
                 app:typeface="light"
                 android:textSize="20sp"
                 android:textColor="@color/white"/>
@@ -110,9 +114,9 @@
                 android:id="@+id/appStoreImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-6dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="14dp"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"/>
 
