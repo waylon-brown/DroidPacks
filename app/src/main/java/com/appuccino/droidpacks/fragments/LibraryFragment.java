@@ -3,6 +3,7 @@ package com.appuccino.droidpacks.fragments;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.extra.MyLog;
 import com.appuccino.droidpacks.listadapters.ListAdapterLibrary;
 import com.appuccino.droidpacks.objects.App;
 
@@ -25,6 +27,7 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
     private ListView listView;
     private ListAdapter adapter;
     private static Context context;
+    private List<App> appList;
 
     // TODO: Rename and change types of parameters
     public static LibraryFragment newInstance(Context context) {
@@ -40,13 +43,13 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        List<App> tempLibList = new ArrayList<App>();
-        tempLibList.add(new App("Scientific 7 Min Workout Pro"));
-        tempLibList.add(new App("Frequency Pro"));
-        tempLibList.add(new App("HoloConvert Pro"));
-        tempLibList.add(new App("TheCampusFeed"));
+        appList = new ArrayList<App>();
+        appList.add(new App("Scientific 7 Min Workout Pro", "com.scientific7"));
+        appList.add(new App("Frequency Pro", "com.appuccino.frequency"));
+        appList.add(new App("HoloConvert Pro", "com.appuccino.holoconvert"));
+        appList.add(new App("TheCampusFeed", "com.appuccino.thecampusfeed"));
 
-        adapter = new ListAdapterLibrary(getActivity(), R.layout.list_row_library, tempLibList);
+        adapter = new ListAdapterLibrary(getActivity(), R.layout.list_row_library, appList);
     }
 
     @Override
@@ -69,7 +72,27 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
             listView.addFooterView(headerFooter, null, false);
         }
 
+        detectAppStates();
+
         return view;
+    }
+
+    private void detectAppStates(){
+        PackageManager pm = context.getPackageManager();
+        for(App app: appList){
+            try {
+                pm.getPackageInfo(app.appPackage, PackageManager.GET_ACTIVITIES);
+                app.installed = true;
+            } catch (PackageManager.NameNotFoundException e) {
+                app.installed = false;
+            }
+        }
+
+        listView.invalidateViews();
+
+        for(App app: appList){
+            MyLog.i(app.appPackage + " installed: " + app.installed);
+        }
     }
 
     @Override

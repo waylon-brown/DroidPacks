@@ -9,10 +9,13 @@ import android.net.Uri;
 public class App {
 
     public String name;
+    public String appPackage;
     private Uri imageUri;
     public Drawable exampleIcon;
+    public boolean installed = false;
 
-    public App(String n){
+    public App(String n, String p){
         name = n;
+        appPackage = p;
     }
 }

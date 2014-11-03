@@ -50,10 +50,10 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
             holder.getPackButton = (CustomTextView)row.findViewById(R.id.downloadPackButton);
 
             List<App> tempAppList = new ArrayList<App>();
-            tempAppList.add(new App("TheCampusFeed"));
-            tempAppList.add(new App("Scientific 7 Min Workout Pro"));
-            tempAppList.add(new App("Frequency Pro"));
-            tempAppList.add(new App("SmartSilence Pro"));
+            tempAppList.add(new App("TheCampusFeed", ""));
+            tempAppList.add(new App("Scientific 7 Min Workout Pro", ""));
+            tempAppList.add(new App("Frequency Pro", ""));
+            tempAppList.add(new App("SmartSilence Pro", ""));
 
             holder.adapter = new ListAdapterApp(context, R.layout.list_column_app, tempAppList);
 
