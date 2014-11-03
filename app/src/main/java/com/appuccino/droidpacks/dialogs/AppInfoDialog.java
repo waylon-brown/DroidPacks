@@ -42,9 +42,9 @@ public class AppInfoDialog extends AlertDialog.Builder{
         ImageView appStoreIcon = (ImageView)layout.findViewById(R.id.appStoreImage);
         CustomTextView appName = (CustomTextView)layout.findViewById(R.id.dialogAppName);
 
-        if(app.exampleIcon != null){
+        //if(app.exampleIcon != null){
             Picasso.with(context).load(R.drawable.example_icon).into(appIcon);
-        }
+        //}
         if(app.exampleIcon != null){
             Picasso.with(context).load(R.drawable.example_app_image).into(appStoreIcon);
         }

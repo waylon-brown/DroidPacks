@@ -91,10 +91,7 @@ public class ListAdapterApp extends ArrayAdapter<App> {
 
         App app = appList.get(position);
 
-        //todo: change out with image URI
-        if(app.exampleIcon != null){
-            Picasso.with(context).load(R.drawable.example_icon).into(holder.appIcon);
-        }
+        Picasso.with(context).load(R.drawable.example_icon).into(holder.appIcon);
 
         //item click listener
         holder.card.setOnClickListener(new View.OnClickListener() {

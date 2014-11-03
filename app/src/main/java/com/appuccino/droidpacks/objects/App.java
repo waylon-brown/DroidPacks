@@ -12,8 +12,7 @@ public class App {
     private Uri imageUri;
     public Drawable exampleIcon;
 
-    public App(String n, Drawable i){
+    public App(String n){
         name = n;
-        exampleIcon = i;
     }
 }

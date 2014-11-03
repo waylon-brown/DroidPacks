@@ -9,12 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.appuccino.droidpacks.R;
-import com.appuccino.droidpacks.dummy.DummyContent;
+import com.appuccino.droidpacks.listadapters.ListAdapterLibrary;
+import com.appuccino.droidpacks.objects.App;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class LibraryFragment extends Fragment implements AbsListView.OnItemClickListener {
 
@@ -37,8 +40,13 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        adapter = new ArrayAdapter<DummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, DummyContent.ITEMS);
+        List<App> tempLibList = new ArrayList<App>();
+        tempLibList.add(new App("Scientific 7 Min Workout Pro"));
+        tempLibList.add(new App("Frequency Pro"));
+        tempLibList.add(new App("HoloConvert Pro"));
+        tempLibList.add(new App("TheCampusFeed"));
+
+        adapter = new ListAdapterLibrary(getActivity(), R.layout.list_row_library, tempLibList);
     }
 
     @Override
@@ -50,6 +58,16 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
         listView = (ListView) view.findViewById(R.id.libraryList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+
+        //if doesnt have footer, add it
+        if(listView.getFooterViewsCount() == 0)
+        {
+            //for card UI
+            View headerFooter = new View(getActivity());
+            headerFooter.setLayoutParams(new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, 20));
+            listView.addHeaderView(headerFooter, null, false);
+            listView.addFooterView(headerFooter, null, false);
+        }
 
         return view;
     }
@@ -77,7 +95,7 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            //mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
         }
     }
 
