@@ -13,9 +13,14 @@ public class App {
     private Uri imageUri;
     public Drawable exampleIcon;
     public boolean installed = false;
+    private int versionCode = 0;
 
     public App(String n, String p){
         name = n;
         appPackage = p;
+    }
+
+    public void setVersionCode(int vCode){
+        versionCode = vCode;
     }
 }

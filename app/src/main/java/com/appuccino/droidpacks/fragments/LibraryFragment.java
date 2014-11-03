@@ -3,6 +3,7 @@ package com.appuccino.droidpacks.fragments;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
 import com.appuccino.droidpacks.R;
@@ -25,7 +25,7 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
 
     private OnFragmentInteractionListener mListener;
     private ListView listView;
-    private ListAdapter adapter;
+    private ListAdapterLibrary adapter;
     private static Context context;
     private List<App> appList;
 
@@ -88,10 +88,21 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
             }
         }
 
-        listView.invalidateViews();
+        //listView.invalidateViews();
+        adapter.notifyDataSetChanged();
 
         for(App app: appList){
-            MyLog.i(app.appPackage + " installed: " + app.installed);
+            PackageInfo pInfo = null;
+            try {
+                pInfo = context.getPackageManager().getPackageInfo(app.appPackage, 0);
+                String version = pInfo.versionName;
+                int versionCode = pInfo.versionCode;
+                app.setVersionCode(versionCode);
+
+                MyLog.i(app.appPackage + " versionName: " + version + " VersionCode: " + versionCode);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 
