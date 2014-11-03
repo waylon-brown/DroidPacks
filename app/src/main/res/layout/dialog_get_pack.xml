@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightlightgray">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:typeface="light"
+                android:textColor="@color/darkgray"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="You set the price. 10% of all purchases go to charity! Spend more than the average to get the gold apps.\n"/>
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:typeface="italic"
+                android:textColor="@color/darkgray"
+                android:textSize="18sp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="center_horizontal"
+                android:text="Current pack average: $2.54"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center_horizontal">
+
+                <com.appuccino.droidpacks.extra.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:typeface="light"
+                    android:textColor="@color/darkgray"
+                    android:textSize="30sp"
+                    android:paddingTop="8dp"
+                    android:text="$"/>
+
+                <EditText
+                    android:id="@+id/priceEditText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2.55"
+                    android:textSize="30sp"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/darkgray"
+                    android:minWidth="20dp"/>
+
+            </LinearLayout>
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:typeface="medium"
+                android:textColor="@color/darkgray"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:gravity="center_horizontal"
+                android:text="Breakdown at $2.55"/>
+
+            <com.appuccino.droidpacks.extra.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:typeface="light"
+                android:textColor="@color/darkgray"
+                android:textSize="18sp"
+                android:paddingTop="8dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="Charitable Charity Organization (charity): $0.24\n\nAppuccino Apps (Developer 1): $0.31\n\nKissMyApps LLC (Developer 2): $0.31\n\nLala Land Apps LLC (Developer 3): $0.31\n\nAnother App Company (Developer 4): $0.31\n\nLast AppCompany (Developer 2): $0.31\n\nDroidPacks: $0.39"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

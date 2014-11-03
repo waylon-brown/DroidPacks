@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 
 import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.dialogs.GetPackDialog;
+import com.appuccino.droidpacks.extra.CustomTextView;
 import com.appuccino.droidpacks.objects.App;
 import com.appuccino.droidpacks.objects.Pack;
 
@@ -33,7 +35,7 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View row = convertView;
         PackHolder holder;
 
@@ -45,18 +47,7 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
             holder = new PackHolder();
             holder.packBackground = (LinearLayout)row.findViewById(R.id.packBackground);
             holder.horizontalAppList = (HListView)row.findViewById(R.id.horizontalAppList);
-
-//            List<String> testList = new ArrayList<String>();
-//            testList.add("First");
-//            testList.add("Second");
-//            testList.add("Third");
-//            testList.add("Fourth");
-//            testList.add("Fifth");
-//            testList.add("Third");
-//            testList.add("Third");
-//            testList.add("Third");
-//            testList.add("Third");
-//            holder.arrayAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_list_item_1, testList);
+            holder.getPackButton = (CustomTextView)row.findViewById(R.id.downloadPackButton);
 
             List<App> tempAppList = new ArrayList<App>();
             tempAppList.add(new App("TheCampusFeed"));
@@ -101,6 +92,15 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
                 break;
         }
 
+        holder.getPackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+                View dialogLayout = inflater.inflate(R.layout.dialog_get_pack, null);
+                new GetPackDialog(context, dialogLayout, packList.get(position));
+            }
+        });
+
         return row;
     }
 
@@ -109,5 +109,6 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
         LinearLayout packBackground;
         ListAdapterApp adapter;
         HListView horizontalAppList;
+        CustomTextView getPackButton;
     }
 }

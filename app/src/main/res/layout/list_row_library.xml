@@ -34,13 +34,14 @@
             android:textColor="@color/darkgray"
             android:textSize="22dp"
             android:singleLine="true"
+            android:gravity="center_horizontal"
             />
 
         <com.appuccino.droidpacks.extra.CustomTextView
             android:id="@+id/appButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Install"
+            android:text="Open"
             app:typeface="light"
             android:textColor="@color/white"
             android:background="@color/flatblue"

@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.appuccino.droidpacks.R;
 import com.appuccino.droidpacks.extra.CustomTextView;
+import com.appuccino.droidpacks.extra.FontManager;
 import com.appuccino.droidpacks.objects.App;
 import com.squareup.picasso.Picasso;
 
@@ -41,15 +43,17 @@ public class AppInfoDialog extends AlertDialog.Builder{
         ImageView appIcon = (ImageView)layout.findViewById(R.id.dialogAppIcon);
         ImageView appStoreIcon = (ImageView)layout.findViewById(R.id.appStoreImage);
         CustomTextView appName = (CustomTextView)layout.findViewById(R.id.dialogAppName);
+        Button yesButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
 
         //if(app.exampleIcon != null){
-            Picasso.with(context).load(R.drawable.example_icon).into(appIcon);
+        Picasso.with(context).load(R.drawable.example_icon).into(appIcon);
         //}
-        if(app.exampleIcon != null){
+        //if(app.exampleIcon != null){
             Picasso.with(context).load(R.drawable.example_app_image).into(appStoreIcon);
-        }
+        //}
         if(app.name != null && !app.name.isEmpty()){
             appName.setText(app.name);
         }
+        yesButton.setTypeface(FontManager.light);
     }
 }
