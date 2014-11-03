@@ -1,5 +1,9 @@
 package com.appuccino.droidpacks.activities;
 
+import android.accounts.AccountManager;
+import android.accounts.AccountManagerFuture;
+import android.accounts.AuthenticatorException;
+import android.accounts.OperationCanceledException;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -7,6 +11,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -17,6 +22,7 @@ import android.widget.LinearLayout;
 
 import com.appuccino.droidpacks.R;
 import com.appuccino.droidpacks.extra.FontManager;
+import com.appuccino.droidpacks.extra.MyLog;
 import com.appuccino.droidpacks.fragments.LibraryFragment;
 import com.appuccino.droidpacks.fragments.PacksFragment;
 import com.astuetz.PagerSlidingTabStrip;
@@ -25,6 +31,7 @@ import com.google.android.gms.common.AccountPicker;
 
 import net.simonvt.menudrawer.MenuDrawer;
 
+import java.io.IOException;
 import java.util.Locale;
 
 
@@ -63,6 +70,33 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
 
         setupMenuDrawerViews();
         //pickUserAccount();
+        new AccountAsyncTask().execute(this);
+    }
+
+    private class AccountAsyncTask extends AsyncTask<Activity, Void, String>{
+
+        @Override
+        protected String doInBackground(Activity... params) {
+            AccountManager accountManager = AccountManager.get(params[0]);
+            AccountManagerFuture<Bundle> amf = accountManager.getAuthTokenByFeatures("com.google", "cp", null, params[0], Bundle.EMPTY, Bundle.EMPTY, null, null );
+
+            Bundle bundle = null;
+            try {
+                bundle = amf.getResult();
+                String name = (String) bundle.get(AccountManager.KEY_ACCOUNT_NAME);
+                String type = (String) bundle.get(AccountManager.KEY_ACCOUNT_TYPE);
+                String token = bundle.getString(AccountManager.KEY_AUTHTOKEN);
+                MyLog.i("INFO: " + name + ", " + type + ", " + token);
+                return token;
+            } catch (OperationCanceledException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (AuthenticatorException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
     }
 
     private void setupMenuDrawerViews(){
