@@ -6,8 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import com.appuccino.droidpacks.R;
 import com.appuccino.droidpacks.dialogs.AppInfoDialog;
@@ -79,7 +79,7 @@ public class ListAdapterApp extends ArrayAdapter<App> {
             LayoutInflater inflater = ((Activity)context).getLayoutInflater();
             row = inflater.inflate(layoutID, parent, false);
 
-            holder.card = (LinearLayout)row.findViewById(R.id.card);
+            holder.card = (FrameLayout)row.findViewById(R.id.card);
             holder.appIcon = (ImageView)row.findViewById(R.id.appIcon);
 
             row.setTag(holder);
@@ -106,13 +106,9 @@ public class ListAdapterApp extends ArrayAdapter<App> {
         return row;
     }
 
-    private void showAppInfoDialog(){
-
-    }
-
     static class AppHolder
     {
-        LinearLayout card;
+        FrameLayout card;
         ImageView appIcon;
     }
 }

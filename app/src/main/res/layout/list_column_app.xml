@@ -1,79 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/card"
     android:layout_width="150dp"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@drawable/card"
     android:clickable="true">
 
-    <ImageView
-        android:id="@+id/appIcon"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        />
-
-    <com.appuccino.droidpacks.extra.CustomTextView
-        android:id="@+id/appName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="4dp"
-        android:paddingRight="4dp"
-        android:paddingTop="4dp"
-        android:text="TheCampusFeed"
-        app:typeface="light"
-        android:gravity="center_horizontal"
-        android:textColor="@color/darkgray"
-        android:textSize="20dp"
-        android:lines="2" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingBottom="14dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_margin="3dp"
+            android:id="@+id/appIcon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
             android:scaleType="fitXY"
-            android:src="@drawable/star_filled"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            />
 
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_margin="3dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/star_filled"/>
+        <com.appuccino.droidpacks.extra.CustomTextView
+            android:id="@+id/appName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:text="TheCampusFeed"
+            app:typeface="light"
+            android:gravity="center_horizontal"
+            android:textColor="@color/darkgray"
+            android:textSize="20dp"
+            android:lines="2" />
 
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_margin="3dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/star_filled"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="14dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal">
 
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_margin="3dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/star_half"/>
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_margin="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/star_filled"/>
 
-        <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:layout_margin="3dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/star_empty"/>
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_margin="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/star_filled"/>
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_margin="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/star_filled"/>
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_margin="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/star_half"/>
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_margin="3dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/star_empty"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/redX"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/red_x"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        android:layout_gravity="right|top"/>
+
+</FrameLayout>

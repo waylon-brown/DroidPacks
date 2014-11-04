@@ -3,6 +3,8 @@ package com.appuccino.droidpacks.dialogs;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
@@ -43,6 +45,7 @@ public class AppInfoDialog extends AlertDialog.Builder{
         ImageView appIcon = (ImageView)layout.findViewById(R.id.dialogAppIcon);
         ImageView appStoreIcon = (ImageView)layout.findViewById(R.id.appStoreImage);
         CustomTextView appName = (CustomTextView)layout.findViewById(R.id.dialogAppName);
+        CustomTextView playStoreButton = (CustomTextView)layout.findViewById(R.id.goToPlayStoreButton);
         Button yesButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
 
         //if(app.exampleIcon != null){
@@ -55,5 +58,13 @@ public class AppInfoDialog extends AlertDialog.Builder{
             appName.setText(app.name);
         }
         yesButton.setTypeface(FontManager.light);
+
+        playStoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + app.appPackage));
+                context.startActivity(browserIntent);
+            }
+        });
     }
 }
