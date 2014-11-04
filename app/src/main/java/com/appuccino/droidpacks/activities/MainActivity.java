@@ -70,7 +70,7 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
 
         setupMenuDrawerViews();
         //pickUserAccount();
-        new AccountAsyncTask().execute(this);
+        //new AccountAsyncTask().execute(this);
     }
 
     private class AccountAsyncTask extends AsyncTask<Activity, Void, String>{
@@ -193,9 +193,9 @@ public class MainActivity extends Activity implements ActionBar.TabListener, Pac
         public Fragment getItem(int position) {
             switch(position){
                 case 0:
-                    return PacksFragment.newInstance(context);
+                    return PacksFragment.newInstance();
                 default:
-                    return LibraryFragment.newInstance(context);
+                    return LibraryFragment.newInstance();
             }
         }
 

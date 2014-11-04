@@ -32,5 +32,6 @@
     <color name="flatgreen">#27ae60</color>
     <color name="flatpurple">#8e44ad</color>
     <color name="flatorange">#d35400</color>
+    <color name="flatred">#c0392b</color>
 
 </resources>

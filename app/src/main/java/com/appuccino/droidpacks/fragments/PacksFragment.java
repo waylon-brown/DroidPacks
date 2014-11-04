@@ -2,7 +2,6 @@ package com.appuccino.droidpacks.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,19 +19,13 @@ import java.util.List;
 
 public class PacksFragment extends Fragment implements AbsListView.OnItemClickListener {
 
-    private static Context context;
     private OnFragmentInteractionListener mListener;
     private ListView mListView;
     private ListAdapterPack adapter;
 
     // TODO: Rename and change types of parameters
-    public static PacksFragment newInstance(Context context) {
+    public static PacksFragment newInstance() {
         PacksFragment fragment = new PacksFragment();
-        PacksFragment.context = context;
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
         return fragment;
     }
 

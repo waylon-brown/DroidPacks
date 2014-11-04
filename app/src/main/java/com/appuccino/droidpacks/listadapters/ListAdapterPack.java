@@ -49,13 +49,13 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
             holder.horizontalAppList = (HListView)row.findViewById(R.id.horizontalAppList);
             holder.getPackButton = (CustomTextView)row.findViewById(R.id.downloadPackButton);
 
-            List<App> tempAppList = new ArrayList<App>();
-            tempAppList.add(new App("TheCampusFeed", ""));
-            tempAppList.add(new App("Scientific 7 Min Workout Pro", ""));
-            tempAppList.add(new App("Frequency Pro", ""));
-            tempAppList.add(new App("SmartSilence Pro", ""));
+            List<App> appList = new ArrayList<App>();
+            appList.add(new App("Scientific 7 Min Workout Pro", "com.scientific7", 14, 99, 4));
+            appList.add(new App("Frequency Pro", "com.appuccino.frequency", 11, 15, 99));
+            appList.add(new App("HoloConvert Pro", "com.appuccino.holoconvert", 14, 99, 4));
+            appList.add(new App("TheCampusFeed", "com.appuccino.thecampusfeed", 14, 99, 1));
 
-            holder.adapter = new ListAdapterApp(context, R.layout.list_column_app, tempAppList);
+            holder.adapter = new ListAdapterApp(context, R.layout.list_column_app, appList);
 
             holder.horizontalAppList.setAdapter(holder.adapter);
 

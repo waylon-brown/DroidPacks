@@ -13,7 +13,10 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:scaleType="fitXY"
-        android:layout_margin="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="8dp"
         />
 
     <LinearLayout
@@ -22,8 +25,7 @@
         android:layout_gravity="center_vertical"
         android:orientation="vertical"
         android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        android:layout_marginLeft="-4dp">
+        android:layout_marginBottom="12dp">
 
         <com.appuccino.droidpacks.extra.CustomTextView
             android:id="@+id/appName"
@@ -39,7 +41,7 @@
 
         <com.appuccino.droidpacks.extra.CustomTextView
             android:id="@+id/appButton"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Open"
             app:typeface="light"

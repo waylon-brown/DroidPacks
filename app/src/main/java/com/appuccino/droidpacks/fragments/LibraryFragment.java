@@ -2,7 +2,6 @@ package com.appuccino.droidpacks.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -26,13 +25,11 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
     private OnFragmentInteractionListener mListener;
     private ListView listView;
     private ListAdapterLibrary adapter;
-    private static Context context;
     private List<App> appList;
 
     // TODO: Rename and change types of parameters
-    public static LibraryFragment newInstance(Context context) {
+    public static LibraryFragment newInstance() {
         LibraryFragment fragment = new LibraryFragment();
-        LibraryFragment.context = context;
         return fragment;
     }
 
@@ -43,11 +40,12 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //name, package, minsdk, maxsdk, serverversionnumber
         appList = new ArrayList<App>();
-        appList.add(new App("Scientific 7 Min Workout Pro", "com.scientific7"));
-        appList.add(new App("Frequency Pro", "com.appuccino.frequency"));
-        appList.add(new App("HoloConvert Pro", "com.appuccino.holoconvert"));
-        appList.add(new App("TheCampusFeed", "com.appuccino.thecampusfeed"));
+        appList.add(new App("Scientific 7 Min Workout Pro", "com.scientific7", 14, 99, 14));
+        appList.add(new App("Frequency Pro", "com.appuccino.frequency", 11, 15, 99));
+        appList.add(new App("HoloConvert Pro", "com.appuccino.holoconvert", 14, 99, 4));
+        appList.add(new App("TheCampusFeed", "com.appuccino.thecampusfeed", 14, 99, 1));
 
         adapter = new ListAdapterLibrary(getActivity(), R.layout.list_row_library, appList);
     }
@@ -77,8 +75,16 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        detectAppStates();
+    }
+
     private void detectAppStates(){
-        PackageManager pm = context.getPackageManager();
+        PackageManager pm = getActivity().getPackageManager();
+
+        //checking for apps that are installed
         for(App app: appList){
             try {
                 pm.getPackageInfo(app.appPackage, PackageManager.GET_ACTIVITIES);
@@ -88,21 +94,27 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
             }
         }
 
-        //listView.invalidateViews();
-        adapter.notifyDataSetChanged();
-
+        //checking installed app version codes
         for(App app: appList){
             PackageInfo pInfo = null;
             try {
-                pInfo = context.getPackageManager().getPackageInfo(app.appPackage, 0);
+                pInfo = getActivity().getPackageManager().getPackageInfo(app.appPackage, 0);
                 String version = pInfo.versionName;
                 int versionCode = pInfo.versionCode;
-                app.setVersionCode(versionCode);
+                app.setInstalledVersionCode(versionCode);
 
                 MyLog.i(app.appPackage + " versionName: " + version + " VersionCode: " + versionCode);
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
+        }
+
+        updateList();
+    }
+
+    public void updateList(){
+        if(adapter != null){
+            adapter.notifyDataSetChanged();
         }
     }
 
