@@ -7,6 +7,6 @@
     For more on layout aliases, see:
     http://developer.android.com/training/multiscreen/screensizes.html#TaskUseAliasFilters
     -->
-    <item name="fragment_app" type="layout">@layout/library</item>
+    <item name="fragment_app" type="layout">@layout/tabfragment_library</item>
 
 </resources>

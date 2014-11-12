@@ -12,10 +12,8 @@ import android.widget.LinearLayout;
 import com.appuccino.droidpacks.R;
 import com.appuccino.droidpacks.dialogs.GetPackDialog;
 import com.appuccino.droidpacks.extra.CustomTextView;
-import com.appuccino.droidpacks.objects.App;
 import com.appuccino.droidpacks.objects.Pack;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import it.sephiroth.android.library.widget.HListView;
@@ -49,13 +47,7 @@ public class ListAdapterPack extends ArrayAdapter<Pack> {
             holder.horizontalAppList = (HListView)row.findViewById(R.id.horizontalAppList);
             holder.getPackButton = (CustomTextView)row.findViewById(R.id.downloadPackButton);
 
-            List<App> appList = new ArrayList<App>();
-            appList.add(new App("Scientific 7 Min Workout Pro", "com.scientific7", 14, 99, 4));
-            appList.add(new App("Frequency Pro", "com.appuccino.frequency", 11, 15, 99));
-            appList.add(new App("HoloConvert Pro", "com.appuccino.holoconvert", 14, 99, 4));
-            appList.add(new App("TheCampusFeed", "com.appuccino.thecampusfeed", 14, 99, 1));
-
-            holder.adapter = new ListAdapterApp(context, R.layout.list_column_app, appList);
+            holder.adapter = new ListAdapterApp(context, R.layout.list_column_app, packList.get(position).getAppList());
 
             holder.horizontalAppList.setAdapter(holder.adapter);
 

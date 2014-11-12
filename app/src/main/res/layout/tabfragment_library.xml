@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,17 +14,22 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
-        android:dividerHeight="6dp"/>
+        android:dividerHeight="6dp"
+        android:divider="@null"/>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/topdropshadow"/>
 
-    <TextView
-        android:id="@android:id/empty"
+    <com.appuccino.droidpacks.extra.CustomTextView
+        android:id="@+id/emptyLibraryText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center" />
+        app:typeface="italic"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="Log in to view your purchased apps"
+        android:visibility="gone"/>
 
 </FrameLayout>

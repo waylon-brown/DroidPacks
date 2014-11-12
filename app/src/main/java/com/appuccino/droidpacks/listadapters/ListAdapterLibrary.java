@@ -70,7 +70,7 @@ public class ListAdapterLibrary extends ArrayAdapter<App> {
     }
 
     private void setActionButton(final App app, CustomTextView actionButton){
-        if(app.isIncompatible){
+        if(!app.isCompatibleBoolean){
             MyLog.i("App " + app.name + " is incompatible");
 
             actionButton.setText("Incompatible");

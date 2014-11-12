@@ -1,11 +1,16 @@
 package com.appuccino.droidpacks.objects;
 
-/**
- * Created by Waylon on 10/27/2014.
- */
+import java.util.List;
+
 public class Pack {
 
-    public Pack(){
+    private List<App> appList;
 
+    public Pack(List<App> list){
+        appList = list;
+    }
+
+    public List<App> getAppList(){
+        return appList;
     }
 }

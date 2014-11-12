@@ -5,10 +5,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.appuccino.droidpacks.R;
 import com.appuccino.droidpacks.extra.CustomTextView;
@@ -46,6 +48,7 @@ public class AppInfoDialog extends AlertDialog.Builder{
         ImageView appStoreIcon = (ImageView)layout.findViewById(R.id.appStoreImage);
         CustomTextView appName = (CustomTextView)layout.findViewById(R.id.dialogAppName);
         CustomTextView playStoreButton = (CustomTextView)layout.findViewById(R.id.goToPlayStoreButton);
+        CustomTextView incompatibleText = (CustomTextView)layout.findViewById(R.id.incompatibleText);
         Button yesButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
 
         //if(app.exampleIcon != null){
@@ -56,6 +59,21 @@ public class AppInfoDialog extends AlertDialog.Builder{
         //}
         if(app.name != null && !app.name.isEmpty()){
             appName.setText(app.name);
+        }
+        if(app.isCompatibleBoolean){
+            incompatibleText.setVisibility(View.GONE);
+        } else {
+            incompatibleText.setVisibility(View.VISIBLE);
+            incompatibleText.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //user's device is below min SDK
+                    if(app.minSDK > Build.VERSION.SDK_INT)
+                        Toast.makeText(context, "This app's minimum SDK version is higher than your device's", Toast.LENGTH_LONG).show();
+                    else    //user's device is above max SDK
+                        Toast.makeText(context, "This app's maximum SDK version is lower than your device's", Toast.LENGTH_LONG).show();
+                }
+            });
         }
         yesButton.setTypeface(FontManager.light);
 

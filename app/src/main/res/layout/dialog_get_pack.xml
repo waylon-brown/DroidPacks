@@ -48,7 +48,7 @@
                     android:layout_height="wrap_content"
                     app:typeface="light"
                     android:textColor="@color/darkgray"
-                    android:textSize="30sp"
+                    android:textSize="40sp"
                     android:paddingTop="8dp"
                     android:text="$"/>
 
@@ -57,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2.55"
-                    android:textSize="30sp"
+                    android:textSize="40sp"
                     android:inputType="numberDecimal"
                     android:textColor="@color/darkgray"
                     android:minWidth="20dp"/>

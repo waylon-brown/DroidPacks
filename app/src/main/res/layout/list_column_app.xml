@@ -84,12 +84,12 @@
 
     <ImageView
         android:id="@+id/redX"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:scaleType="fitXY"
-        android:src="@drawable/red_x"
         android:layout_marginRight="6dp"
         android:layout_marginTop="6dp"
-        android:layout_gravity="right|top"/>
+        android:layout_gravity="right|top"
+        android:visibility="gone"/>
 
 </FrameLayout>

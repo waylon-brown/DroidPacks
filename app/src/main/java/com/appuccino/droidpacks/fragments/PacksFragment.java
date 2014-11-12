@@ -2,6 +2,7 @@ package com.appuccino.droidpacks.fragments;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.activities.MainActivity;
 import com.appuccino.droidpacks.listadapters.ListAdapterPack;
+import com.appuccino.droidpacks.objects.App;
 import com.appuccino.droidpacks.objects.Pack;
 
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ public class PacksFragment extends Fragment implements AbsListView.OnItemClickLi
     private OnFragmentInteractionListener mListener;
     private ListView mListView;
     private ListAdapterPack adapter;
+    List<Pack> packList;
 
     // TODO: Rename and change types of parameters
     public static PacksFragment newInstance() {
@@ -40,13 +44,15 @@ public class PacksFragment extends Fragment implements AbsListView.OnItemClickLi
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        List<Pack> tempPackList = new ArrayList<Pack>();
-        tempPackList.add(new Pack());
-        tempPackList.add(new Pack());
-        tempPackList.add(new Pack());
-        tempPackList.add(new Pack());
+        List<App> appList = ((MainActivity)getActivity()).storeAppList;
 
-        adapter = new ListAdapterPack(getActivity(), R.layout.list_row_pack, tempPackList);
+        packList = new ArrayList<Pack>();
+        packList.add(new Pack(appList));
+        packList.add(new Pack(appList));
+        packList.add(new Pack(appList));
+        packList.add(new Pack(appList));
+
+        adapter = new ListAdapterPack(getActivity(), R.layout.list_row_pack, packList);
     }
 
     @Override
@@ -61,7 +67,32 @@ public class PacksFragment extends Fragment implements AbsListView.OnItemClickLi
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
 
+        detectIncompatibleApps();
+
         return view;
+    }
+
+    private void detectIncompatibleApps(){
+        PackageManager pm = getActivity().getPackageManager();
+
+        for(Pack pack: packList){
+            //checking installed app version codes
+            for(App app: pack.getAppList()){
+                if(App.appIsCompatible(app.minSDK, app.maxSDK)){
+                    app.isCompatibleBoolean = true;
+                } else {
+                    app.isCompatibleBoolean = false;
+                }
+            }
+
+            updateList();
+        }
+    }
+
+    public void updateList(){
+        if(adapter != null){
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override

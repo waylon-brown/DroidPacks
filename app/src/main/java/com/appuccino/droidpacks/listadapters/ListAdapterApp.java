@@ -11,6 +11,7 @@ import android.widget.ImageView;
 
 import com.appuccino.droidpacks.R;
 import com.appuccino.droidpacks.dialogs.AppInfoDialog;
+import com.appuccino.droidpacks.extra.CustomTextView;
 import com.appuccino.droidpacks.objects.App;
 import com.squareup.picasso.Picasso;
 
@@ -81,6 +82,8 @@ public class ListAdapterApp extends ArrayAdapter<App> {
 
             holder.card = (FrameLayout)row.findViewById(R.id.card);
             holder.appIcon = (ImageView)row.findViewById(R.id.appIcon);
+            holder.redX = (ImageView)row.findViewById(R.id.redX);
+            holder.appName = (CustomTextView)row.findViewById(R.id.appName);
 
             row.setTag(holder);
         }
@@ -91,7 +94,14 @@ public class ListAdapterApp extends ArrayAdapter<App> {
 
         App app = appList.get(position);
 
+        holder.appName.setText(app.name);
         Picasso.with(context).load(R.drawable.example_icon).into(holder.appIcon);
+        if(app.isCompatibleBoolean){
+            holder.redX.setVisibility(View.GONE);
+        } else {
+            holder.redX.setVisibility(View.VISIBLE);
+            Picasso.with(context).load(R.drawable.red_x).into(holder.redX);
+        }
 
         //item click listener
         holder.card.setOnClickListener(new View.OnClickListener() {
@@ -110,5 +120,7 @@ public class ListAdapterApp extends ArrayAdapter<App> {
     {
         FrameLayout card;
         ImageView appIcon;
+        CustomTextView appName;
+        ImageView redX;
     }
 }

@@ -57,7 +57,8 @@
         android:gravity="center"
         android:layout_gravity="right"
         app:typeface="medium"
-        android:rotation="15"/>
+        android:rotation="15"
+        android:visibility="gone"/>
 
 </FrameLayout>
 

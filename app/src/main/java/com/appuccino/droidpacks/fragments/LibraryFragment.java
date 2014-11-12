@@ -13,8 +13,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.appuccino.droidpacks.R;
+import com.appuccino.droidpacks.activities.MainActivity;
+import com.appuccino.droidpacks.extra.CustomTextView;
 import com.appuccino.droidpacks.extra.MyLog;
 import com.appuccino.droidpacks.listadapters.ListAdapterLibrary;
+import com.appuccino.droidpacks.objects.Account;
 import com.appuccino.droidpacks.objects.App;
 
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
 
     private OnFragmentInteractionListener mListener;
     private ListView listView;
+    private CustomTextView emptyListTextView;
     private ListAdapterLibrary adapter;
     private List<App> appList;
 
@@ -41,11 +45,14 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
         super.onCreate(savedInstanceState);
 
         //name, package, minsdk, maxsdk, serverversionnumber
-        appList = new ArrayList<App>();
-        appList.add(new App("Scientific 7 Min Workout Pro", "com.scientific7", 14, 99, 14));
-        appList.add(new App("Frequency Pro", "com.appuccino.frequency", 11, 15, 99));
-        appList.add(new App("HoloConvert Pro", "com.appuccino.holoconvert", 14, 99, 4));
-        appList.add(new App("TheCampusFeed", "com.appuccino.thecampusfeed", 14, 99, 1));
+        Account userAccount = ((MainActivity)getActivity()).userAccount;
+        if(userAccount != null){
+            int[] userAppIDs = ((MainActivity)getActivity()).userAccount.getUserAppData().boughtAppIDs;
+            appList = MainActivity.appListFromIDs(userAppIDs);
+        } else {
+            appList = new ArrayList<App>();
+        }
+
 
         adapter = new ListAdapterLibrary(getActivity(), R.layout.list_row_library, appList);
     }
@@ -53,12 +60,27 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.library, container, false);
+        View view = inflater.inflate(R.layout.tabfragment_library, container, false);
 
         // Set the adapter
         listView = (ListView) view.findViewById(R.id.libraryList);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(this);
+
+        emptyListTextView = (CustomTextView)view.findViewById(R.id.emptyLibraryText);
+        //if list is empty or user not logged in, show empty text
+        if(appList == null || appList.size() == 0 || ((MainActivity)getActivity()).userAccount == null){
+            emptyListTextView.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+
+            //if making list invisible because it is just empty, change the text
+            if(((MainActivity)getActivity()).userAccount != null){
+                emptyListTextView.setText("Your purchased apps will show up here");
+            }
+        } else {
+            emptyListTextView.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
+        }
 
         //if doesnt have footer, add it
         if(listView.getFooterViewsCount() == 0)
@@ -92,6 +114,8 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
             } catch (PackageManager.NameNotFoundException e) {
                 app.installed = false;
             }
+
+
         }
 
         //checking installed app version codes
@@ -102,6 +126,9 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
                 String version = pInfo.versionName;
                 int versionCode = pInfo.versionCode;
                 app.setInstalledVersionCode(versionCode);
+                if(app.needsUpdate){
+                    ((MainActivity)getActivity()).setTabUpdateTextVisibility(true);
+                }
 
                 MyLog.i(app.appPackage + " versionName: " + version + " VersionCode: " + versionCode);
             } catch (PackageManager.NameNotFoundException e) {
@@ -115,6 +142,20 @@ public class LibraryFragment extends Fragment implements AbsListView.OnItemClick
     public void updateList(){
         if(adapter != null){
             adapter.notifyDataSetChanged();
+        }
+
+        //if list is empty or user not logged in, show empty text
+        if(appList == null || appList.size() == 0 || ((MainActivity)getActivity()).userAccount == null){
+            emptyListTextView.setVisibility(View.VISIBLE);
+            listView.setVisibility(View.GONE);
+
+            //if making list invisible because it is just empty, change the text
+            if(((MainActivity)getActivity()).userAccount != null){
+                emptyListTextView.setText("Your purchased apps will show up here");
+            }
+        } else {
+            emptyListTextView.setVisibility(View.GONE);
+            listView.setVisibility(View.VISIBLE);
         }
     }
 
